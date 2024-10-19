@@ -119,5 +119,5 @@ while true do
     end
 
     -- Delay sebelum menyummon Freddy berikutnya
-    wait(10) -- Ganti ini menjadi 10 detik sesuai permintaan Anda
+    wait(7) -- Ganti ini menjadi 10 detik sesuai permintaan Anda
 end
