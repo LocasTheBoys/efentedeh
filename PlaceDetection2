@@ -19,9 +19,9 @@ if game.PlaceId == 15860930970 then
     end
     
     local scripts = {
-        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Jalan"
+        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Jalan",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanem",
-        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Upgrade",
+        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Upgrade"
     }
     
     executeScripts(scripts)
