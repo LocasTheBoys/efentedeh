@@ -1,4 +1,4 @@
-wait(3)--kotak
+wait(3)--kotak bagus ini
 -- Mendapatkan posisi dari HumanoidRootPart local player
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
