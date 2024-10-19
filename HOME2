@@ -1,4 +1,4 @@
---print("HOME 2")
+--print("HOME 2") kotak
 print("Full Script Is Running")
 local function executeScripts(scripts)
     for _, script in ipairs(scripts) do
