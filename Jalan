@@ -1,4 +1,14 @@
---Pojokan Depan Pintu Masuk
+if game.PlaceId == 15860930970 then
+    wait(1)
+    -- Pilih Level
+    local args = {
+        [1] = "1",
+        [2] = 1,
+        [3] = 1
+    }
+    game:GetService("ReplicatedStorage").Remotes.Main.Vote:FireServer(unpack(args))
+
+    --Pojokan Depan Pintu Masuk
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -39,4 +49,9 @@ for i = 1, 5 do -- Loop 5 times
     end
 
     wait(5) -- Wait for 5 seconds before the next loop iteration
+end
+    print("Game ID cocok, script dijalankan.")
+else
+    -- Script ini hanya dijalankan jika game ID tidak cocok
+    print("Game ID tidak cocok, script tidak dijalankan.")
 end
