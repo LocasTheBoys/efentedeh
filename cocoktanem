@@ -1,3 +1,4 @@
+wait (3)
 -- Mendapatkan posisi dari HumanoidRootPart local player
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
