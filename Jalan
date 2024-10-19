@@ -1,44 +1,39 @@
-if game.PlaceId == 15860930970 then
-    wait(1)
-    -- Pilih Level
-    local args = {
-        [1] = "1",
-        [2] = 1,
-        [3] = 1
-    }
-    game:GetService("ReplicatedStorage").Remotes.Main.Vote:FireServer(unpack(args))
-
-    --Pojokan Depan Pintu Masuk
+--Jalan Panjang Tengah
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-local function getPart()
-    -- Attempt to get the part from the specified location
-    local part = workspace:FindFirstChild("Map") and workspace.Map:FindFirstChild("Paths"):FindFirstChild("1"):FindFirstChild("1")
-    return part
+local function getParts()
+    -- Attempt to get the first part from script 0
+    local part1 = workspace:FindFirstChild("Map") and workspace.Map:FindFirstChild("Paths"):FindFirstChild("1"):FindFirstChild("2")
+    -- Attempt to get the second part from script 1
+    local part2 = workspace:FindFirstChild("Map") and workspace.Map:FindFirstChild("Paths"):FindFirstChild("1"):FindFirstChild("1")
+    return part1, part2
 end
 
 for i = 1, 5 do -- Loop 5 times
-    local partFound = false -- Flag to track if the part is found
+    local partsFound = false -- Flag to track if parts are found
 
     while true do
-        -- Check if the map exists before attempting to get the part
+        -- Check if the map exists before attempting to get parts
         if workspace:FindFirstChild("Map") then
-            local part = getPart()
+            local part1, part2 = getParts()
 
-            -- Check if the part is detected
-            if part then
-                partFound = true -- Set flag to true if part is found
+            -- Check if both parts are detected
+            if part1 and part2 then
+                partsFound = true -- Set flag to true if parts are found
 
-                -- Teleport the character to the part's position if not already there
-                if (humanoidRootPart.Position - part.Position).magnitude > 0.1 then -- Check if not already at part
-                    humanoidRootPart.CFrame = CFrame.new(part.Position)
+                -- Calculate the middle position
+                local middlePosition = (part1.Position + part2.Position) / 2
+
+                -- Teleport the character to the middle position if not already there
+                if (humanoidRootPart.Position - middlePosition).magnitude > 0.1 then -- Check if not already at middle
+                    humanoidRootPart.CFrame = CFrame.new(middlePosition)
                 end
             else
-                if not partFound then
-                    print("Waiting for part to be detected...") -- Log message when part is not found
+                if not partsFound then
+                    print("Waiting for parts to be detected...") -- Log message when parts are not found
                 end
             end
         else
@@ -49,9 +44,4 @@ for i = 1, 5 do -- Loop 5 times
     end
 
     wait(5) -- Wait for 5 seconds before the next loop iteration
-end
-    print("Game ID cocok, script dijalankan.")
-else
-    -- Script ini hanya dijalankan jika game ID tidak cocok
-    print("Game ID tidak cocok, script tidak dijalankan.")
 end
