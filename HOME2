@@ -1,0 +1,19 @@
+--print("HOME 2")
+print("Full Script Is Running")
+local function executeScripts(scripts)
+    for _, script in ipairs(scripts) do
+        local co = coroutine.create(function()
+            loadstring(game:HttpGet(script))()
+        end)
+        coroutine.resume(co)
+    end
+end
+
+local scripts = {
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection2",
+    "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
+    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP"
+}
+
+executeScripts(scripts)
