@@ -1,4 +1,4 @@
--- Daily Claim (Loop from 1 to 7)
+-- Daily Claim (Loop frm 1 to 7)
 for i = 1, 7 do
     local args = {
         [1] = i -- Cycles through 1 to 7
