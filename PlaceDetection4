@@ -24,10 +24,9 @@ if game.PlaceId == 15860930970 then
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanemst2ke1",--fox
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanemst2ke2",--bonie
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoSkip",
-        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/TryAgain",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Upgrade2",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Upgrade3",
-        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1"
+        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/TryAgain"
     }
     
     executeScripts(scripts)
