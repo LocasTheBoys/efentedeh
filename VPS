@@ -1,20 +1,11 @@
---print("VPS") kotak
-print("Full Script Is Running")
-local function executeScripts(scripts)
-    for _, script in ipairs(scripts) do
-        local co = coroutine.create(function()
-            loadstring(game:HttpGet(script))()
-        end)
-        coroutine.resume(co)
-    end
+-- Loop untuk menjalankan 1000 kali
+for i = 1, 1000 do
+    local args = {
+        [1] = 10  -- dan 1
+    }
+
+    -- Memanggil server menggunakan InvokeServer dengan argumen yang diberikan
+    game:GetService("ReplicatedStorage").Remotes.Summons.Hatch:InvokeServer(unpack(args))
+    
+    wait(0.1)  -- Tambahkan sedikit jeda agar tidak terlalu cepat (opsional)
 end
-
-local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection3",
-    "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
-    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP"
-}
-
-executeScripts(scripts)
