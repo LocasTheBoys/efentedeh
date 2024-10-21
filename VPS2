@@ -1,4 +1,20 @@
---print("VPS") kotak
+--print("VPS 2") kotak
 print("Full Script Is Running")
-wait (3)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-954.2, 244.78, -70.13) -- teleport Pintu 4
+local function executeScripts(scripts)
+    for _, script in ipairs(scripts) do
+        local co = coroutine.create(function()
+            loadstring(game:HttpGet(script))()
+        end)
+        coroutine.resume(co)
+    end
+end
+x
+local scripts = {
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection2",
+    "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
+    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP"
+}
+
+executeScripts(scripts)
