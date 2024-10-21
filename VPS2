@@ -6,6 +6,4 @@ for i = 1, 1000 do
 
     -- Memanggil server menggunakan InvokeServer dengan argumen yang diberikan
     game:GetService("ReplicatedStorage").Remotes.Summons.Hatch:InvokeServer(unpack(args))
-    
-    wait(0.1)  -- Tambahkan sedikit jeda agar tidak terlalu cepat (opsional)
 end
