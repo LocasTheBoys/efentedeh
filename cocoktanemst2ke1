@@ -13,7 +13,7 @@ local nama_pet = "Funtime Foxy"  -- Anda dapat mengubah nama pet di sini
 
 -- Radius lingkaran sekitar player
 local radius = 10  -- Radius luar
-local innerRadius = 5.5  -- Radius dalam (lubang donat)
+local innerRadius = 7  -- Radius dalam (lubang donat)
 local usedPositions = {} 
 
 local radiusIndicator = Instance.new("Part")
