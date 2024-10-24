@@ -1,4 +1,4 @@
---print("HOME") bulat
+--print("HOME") bulat starter
 print("Full Script Is Running")
 local function executeScripts(scripts)
     for _, script in ipairs(scripts) do
