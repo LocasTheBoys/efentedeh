@@ -13,7 +13,7 @@ local function getPaths()
 end
 
 -- Konfigurasi Masang via path Koordinat
-local waitTime = 2 -- Waktu tunggu minimal untuk memasang pet
+local waitTime = 1.5 -- Waktu tunggu minimal untuk memasang pet
 local petName = "Funtime Foxy" -- Nama pet yang akan disummon
 
 -- Fungsi teleportasi
