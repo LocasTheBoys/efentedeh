@@ -1,6 +1,6 @@
 -- Konfigurasi Wave Detection
 local targetWaves = { "Wave 4/15", "Wave 5/15" }  -- Ganti dengan wave yang diinginkan
-local waitTime = 7 -- Waktu tunggu dalam detik setelah wave terdeteksi
+local waitTime = 7.5 -- Waktu tunggu dalam detik setelah wave terdeteksi
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local PathWaveDetection = Player.PlayerGui.Top.Wave
