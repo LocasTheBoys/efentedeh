@@ -22,7 +22,6 @@ if game.PlaceId == 15860930970 then
     local scripts = {
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanemst4ke1",--fox
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanemst4ke2",--fredd
-        "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/cocoktanemst2ke2",--bonie
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoSkip",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoSell1",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Upgrade4",
