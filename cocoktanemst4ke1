@@ -1,9 +1,3 @@
--- Konfigurasi
-local waitTime = 1.5 -- Waktu tunggu minimal sebelum memasang pet setelah teleport
-local petName = "Funtime Foxy" -- Nama pet yang akan disummon
-local repeatTeleport = 2 -- Jumlah pengulangan teleportasi dan summon
-local repeatDelay = 3 -- Delay antar pengulangan teleportasi dalam detik
-
 -- Fungsi untuk mendapatkan paths dari script 1
 local function getPaths()
     local map = workspace:FindFirstChild("Map")
@@ -18,40 +12,46 @@ local function getPaths()
     return path1
 end
 
--- Fungsi teleportasi dan summon unit
+-- Konfigurasi Masang via path Koordinat
+local waitTime = 1.5 -- Waktu tunggu minimal untuk memasang pet
+local petName = "Funtime Foxy" -- Nama pet yang akan disummon
+
+-- Fungsi teleportasi
 local function teleportAndSummon(part1, part2)
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
 
-    for i = 1, repeatTeleport do
-        -- Memindahkan karakter ke part1 dan part2
-        character.HumanoidRootPart.CFrame = part1.CFrame
-        character.HumanoidRootPart.CFrame = part2.CFrame
+    -- Memindahkan karakter ke part1 dan part2
+    character.HumanoidRootPart.CFrame = part1.CFrame
+    character.HumanoidRootPart.CFrame = part2.CFrame
 
-        -- Menentukan midpoint antara part1 dan part2, lalu memindahkan karakter ke midpoint tersebut
-        local finalMidpoint = (part1.Position + part2.Position) / 2
-        character.HumanoidRootPart.CFrame = CFrame.new(finalMidpoint)
+    -- Menentukan midpoint antara part1 dan part2, lalu memindahkan karakter ke midpoint tersebut
+    local finalMidpoint = (part1.Position + part2.Position) / 2
+    character.HumanoidRootPart.CFrame = CFrame.new(finalMidpoint)
 
-        -- Waktu tunggu setelah teleportasi sebelum summon pet
-        wait(waitTime)
+    -- Waktu tunggu setelah teleportasi sebelum summon pet
+    wait(waitTime)
 
-        -- Mengirim sinyal "Reset" untuk StopSettings
-        game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer("Reset")
-        for j = 1, 68 do
-            game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer()
-        end
+    -- Mengirim sinyal "Reset" untuk StopSettings
+    local argsReset = {
+        [1] = "Reset"
+    }
+    game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer(unpack(argsReset))
 
-        -- Mengambil CFrame dari HumanoidRootPart pemain untuk summoning
-        local humanoidRootPartCFrame = character.HumanoidRootPart.CFrame
-
-        -- Mengirim sinyal untuk summon tower dengan pet yang sudah dikonfigurasi
-        local argsSummon = { [1] = petName, [2] = humanoidRootPartCFrame }
-        game:GetService("ReplicatedStorage").Remotes.Towers.SummonTower:FireServer(unpack(argsSummon))
-        print("Summoning unit:", petName, "at position", character.HumanoidRootPart.Position)
-
-        -- Delay antar pengulangan teleportasi
-        wait(repeatDelay)
+    -- Mengirim sinyal StopSettings berulang kali
+    for i = 1, 68 do
+        game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer()
     end
+
+    -- Mengambil CFrame dari HumanoidRootPart pemain untuk summoning
+    local humanoidRootPartCFrame = character.HumanoidRootPart.CFrame
+
+    -- Mengirim sinyal untuk summon tower dengan pet yang sudah dikonfigurasi
+    local argsSummon = {
+        [1] = petName,
+        [2] = humanoidRootPartCFrame
+    }
+    game:GetService("ReplicatedStorage").Remotes.Towers.SummonTower:FireServer(unpack(argsSummon))
 end
 
 -- Loop menunggu hingga path terdeteksi
