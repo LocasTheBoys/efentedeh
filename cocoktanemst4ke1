@@ -1,4 +1,5 @@
 task.wait(15)
+print("TP IKKY")
 -- Ini TP 1
 -- Mengakses karakter pemain 
 local player = game.Players.LocalPlayer
