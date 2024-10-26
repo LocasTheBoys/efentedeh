@@ -1,13 +1,13 @@
 -- Fungsi untuk mendapatkan paths dari script 1
 local function getPaths()
-    local map = workspace:FindFirstChild("Map")
-    if not map then return nil end -- Pastikan Map ada
+    local map = workspace:WaitForChild("Map", 10) -- Tunggu Map
+    if not map then return nil end
 
-    local paths = map:FindFirstChild("Paths")
-    if not paths then return nil end -- Pastikan Paths ada
+    local paths = map:WaitForChild("Paths", 10) -- Tunggu Paths
+    if not paths then return nil end
 
-    local path1 = paths:FindFirstChild("1")
-    if not path1 then return nil end -- Pastikan Path 1 ada
+    local path1 = paths:WaitForChild("1", 10) -- Tunggu Path 1
+    if not path1 then return nil end
 
     return path1
 end
@@ -20,43 +20,36 @@ local petName = "Funtime Foxy" -- Nama pet yang akan disummon
 local function teleportAndSummon(part1, part2)
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
-
-    -- Loop keseluruhan proses teleportasi dan summon unit dua kali
+    
     for i = 1, 2 do
-        -- Memindahkan karakter ke part1 dan part2
-        character.HumanoidRootPart.CFrame = part1.CFrame
-        wait(0.1) -- Tunggu sebentar di part1
-        character.HumanoidRootPart.CFrame = part2.CFrame
-        wait(0.1) -- Tunggu sebentar di part2
+        -- Pastikan karakter dan bagian ditemukan
+        if character and part1 and part2 then
+            -- Teleportasi ke part1 dan part2
+            character.HumanoidRootPart.CFrame = part1.CFrame
+            wait(0.1)
+            character.HumanoidRootPart.CFrame = part2.CFrame
+            wait(0.1)
 
-        -- Menentukan midpoint antara part1 dan part2, lalu memindahkan karakter ke midpoint tersebut
-        local finalMidpoint = (part1.Position + part2.Position) / 2
-        character.HumanoidRootPart.CFrame = CFrame.new(finalMidpoint)
+            -- Midpoint antara part1 dan part2
+            local finalMidpoint = (part1.Position + part2.Position) / 2
+            character.HumanoidRootPart.CFrame = CFrame.new(finalMidpoint)
+            
+            wait(waitTime) -- Tunggu sebelum summon
 
-        -- Waktu tunggu setelah teleportasi sebelum summon pet
-        wait(waitTime)
+            -- Reset Settings
+            game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer("Reset")
+            for j = 1, 68 do
+                game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer()
+            end
 
-        -- Mengirim sinyal "Reset" untuk StopSettings
-        local argsReset = { [1] = "Reset" }
-        game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer(unpack(argsReset))
-
-        -- Mengirim sinyal StopSettings berulang kali
-        for j = 1, 68 do
-            game:GetService("ReplicatedStorage").Remotes.Misc.StopSettings:FireServer()
+            -- Summon unit
+            local argsSummon = { [1] = petName, [2] = character.HumanoidRootPart.CFrame }
+            game:GetService("ReplicatedStorage").Remotes.Towers.SummonTower:FireServer(unpack(argsSummon))
+            print("Summoning unit:", petName, "at position", character.HumanoidRootPart.Position)
+        else
+            print("Teleportation failed: Part or Character missing.")
         end
-
-        -- Mengambil CFrame dari HumanoidRootPart pemain untuk summoning
-        local humanoidRootPartCFrame = character.HumanoidRootPart.CFrame
-
-        -- Mengirim sinyal untuk summon tower dengan pet yang sudah dikonfigurasi
-        local argsSummon = { [1] = petName, [2] = humanoidRootPartCFrame }
-        game:GetService("ReplicatedStorage").Remotes.Towers.SummonTower:FireServer(unpack(argsSummon))
-        
-        -- Pesan di konsol untuk memastikan eksekusi summon
-        print("Summoning unit:", petName, "at position", humanoidRootPartCFrame.Position)
-        
-        -- Tunggu sejenak sebelum pengulangan berikutnya
-        wait(1)
+        wait(1) -- Tunggu sebelum loop berikutnya
     end
 end
 
@@ -66,26 +59,26 @@ local pathsFound = false
 while not pathsFound do
     local path = getPaths()
     if path then
-        pathsFound = true -- Jika path ditemukan, flag menjadi true
+        pathsFound = true
 
-        -- Menyiapkan bagian untuk teleportasi
+        -- Siapkan bagian teleportasi
         local partList = {
-            {path:FindFirstChild("2"), path:FindFirstChild("Start")},
-            {path:FindFirstChild("1"), path:FindFirstChild("3")},
-            {path:FindFirstChild("3"), path:FindFirstChild("Start")}
+            {path:WaitForChild("2", 10), path:WaitForChild("Start", 10)},
+            {path:WaitForChild("1", 10), path:WaitForChild("3", 10)},
+            {path:WaitForChild("3", 10), path:WaitForChild("Start", 10)}
         }
 
-        -- Melakukan teleportasi dan summon pet di setiap bagian yang ditentukan
+        -- Eksekusi teleportasi dan summon di setiap bagian
         for _, parts in ipairs(partList) do
-            if parts[1] and parts[2] then -- Pastikan part ada sebelum teleportasi
+            if parts[1] and parts[2] then
                 teleportAndSummon(parts[1], parts[2])
             else
-                print("Some parts are missing in path, skipping teleportation for this set.")
+                print("Some parts are missing, skipping this teleportation.")
             end
         end
     else
-        print("Waiting for paths to be detected...") -- Jika path belum ditemukan
+        print("Waiting for paths to be detected...")
     end
 
-    wait(1) -- Tunggu 1 detik sebelum memeriksa lagi
+    wait(1) -- Cek ulang tiap detik
 end
