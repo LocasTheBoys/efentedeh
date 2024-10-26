@@ -1,0 +1,45 @@
+wait(5)
+-- Konfigurasi Utama
+local delayBuyPresent = 1        -- Delay untuk beli present
+local delayOpenPresent = 2       -- Delay untuk membuka present
+local delayEquipPet = 1          -- Delay untuk equip pet setelah ditemukan
+local petName = "WitheredNightguard Afton" -- Nama pet yang ingin dicek
+local presentName = "NightgaurdAftonPresent" -- Nama present yang akan dibuka
+local openQuantity = 1           -- Jumlah present yang akan dibuka
+
+-- Fungsi Auto Beli Present
+local function buyPresent()
+    game:GetService("ReplicatedStorage").Remotes.Misc.LimitedExclusivePack:FireServer()
+    print("Present dibeli.")
+end
+
+-- Fungsi Auto Open Present
+local function openPresent()
+    local args = { [1] = presentName, [2] = openQuantity }
+    game:GetService("ReplicatedStorage").Remotes.Misc.OpenPresent:FireServer(unpack(args))
+    print("Present dibuka.")
+end
+
+-- Fungsi Auto Equip Pet
+local function equipPet()
+    local player = game:GetService("Players").LocalPlayer
+    local petValuePath = player.PlayerGui.Inventory.InventoryFrame.HolderFrame.Units[petName].TowerID.Value
+    
+    if petValuePath then
+        local args = { petValuePath }
+        game:GetService("ReplicatedStorage").Remotes.Towers.Equip:FireServer(unpack(args))
+        print("Pet berhasil di-equip.")
+    else
+        print("Pet tidak ditemukan di dalam tas.")
+    end
+end
+
+-- Rangkaian Proses Utama
+buyPresent()
+wait(delayBuyPresent)           -- Tunggu sebelum membuka present
+
+openPresent()
+wait(delayOpenPresent)          -- Tunggu sebelum mengequip pet
+
+equipPet()
+wait(delayEquipPet)             -- Tunggu sebelum melakukan tindakan berikutnya
