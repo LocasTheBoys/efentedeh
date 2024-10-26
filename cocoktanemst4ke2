@@ -52,8 +52,13 @@ end
 local path = workspace.Map:WaitForChild("Paths"):WaitForChild("1")
 local partList = {
     {path:WaitForChild("2"), path:WaitForChild("Start")},
+    {path:WaitForChild("4"), path:WaitForChild("Start")},
     {path:WaitForChild("1"), path:WaitForChild("3")},
-    {path:WaitForChild("3"), path:WaitForChild("Start")}
+    {path:WaitForChild("2"), path:WaitForChild("Start")},
+    {path:WaitForChild("2"), path:WaitForChild("Start")},
+    {path:WaitForChild("4"), path:WaitForChild("Start")},
+    {path:WaitForChild("1"), path:WaitForChild("3")},
+    {path:WaitForChild("2"), path:WaitForChild("Start")}
 }
 
 -- Fungsi untuk mendeteksi wave dan menjalankan skrip 2
