@@ -5,7 +5,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 -- Batas jumlah Freddy yang bisa disummon
-local maxFreddyCount = 5
+local maxFreddyCount = 10
 local currentFreddyCount = 0  -- Menghitung jumlah Freddy yang sudah disummon 
 
 -- Nama pet yang dapat dengan mudah diubah
