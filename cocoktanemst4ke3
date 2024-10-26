@@ -1,5 +1,5 @@
 -- Donat No Visual
-wait (80)
+wait (90)
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
