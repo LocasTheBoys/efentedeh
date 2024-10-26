@@ -1,18 +1,17 @@
--- Konfigurasi Wave Detection
-local targetWaves = { "Wave 4/15", "Wave 5/15" }  -- Ganti dengan wave yang diinginkan
-local waitTime = 2 -- Waktu tunggu dalam detik setelah wave terdeteksi
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PathWaveDetection = Player.PlayerGui.Top.Wave
-local executedWaves = {} -- Menyimpan status eksekusi untuk setiap wave
-
--- Skrip 2: Konfigurasi Masang via path Koordinat
+-- Konfigurasi
+local targetMoney = 7500 -- Jumlah minimum uang untuk menjalankan skrip
+local loopCount = 2 -- Jumlah pengulangan teleportasi dan summon pet
 local petName = "Funtime Freddy" -- Nama pet yang akan disummon
 
--- Fungsi teleportasi
+-- Game Services
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PathMoneyDetection = Player.PlayerGui.Top.Wave.Text -- Lokasi untuk memeriksa jumlah uang
+
+-- Fungsi teleportasi dan summon pet
 local function teleportAndSummon(part1, part2)
     local character = Player.Character or Player.CharacterAdded:Wait()
-
+    
     -- Memindahkan karakter ke part1 dan part2
     character.HumanoidRootPart.CFrame = part1.CFrame
     character.HumanoidRootPart.CFrame = part2.CFrame
@@ -22,7 +21,7 @@ local function teleportAndSummon(part1, part2)
     character.HumanoidRootPart.CFrame = CFrame.new(finalMidpoint)
 
     -- Waktu tunggu setelah teleportasi sebelum summon pet
-    wait(waitTime)
+    wait(2)
 
     -- Mengirim sinyal "Reset" untuk StopSettings
     local argsReset = {
@@ -55,22 +54,20 @@ local partList = {
     {path:WaitForChild("2"), path:WaitForChild("Start")}
 }
 
--- Fungsi untuk mendeteksi wave dan menjalankan skrip 2
-local function detectWaveAndExecute(waveText)
-    if table.find(targetWaves, waveText) and not executedWaves[waveText] then
-        wait(waitTime) -- Tunggu sesuai waktu yang ditentukan
+-- Fungsi untuk mendeteksi jumlah uang dan menjalankan skrip 2
+local function checkMoneyAndExecute()
+    local moneyText = PathMoneyDetection.Text
+    local moneyAmount = tonumber(moneyText:match("%$(%d+,%d+)"):gsub(",", "")) or 0
 
-        -- Melakukan teleportasi dan summon pet di setiap bagian yang ditentukan
-        for _, parts in ipairs(partList) do
-            teleportAndSummon(parts[1], parts[2])
+    if moneyAmount >= targetMoney then
+        -- Melakukan teleportasi dan summon pet di setiap bagian yang ditentukan, sesuai loopCount
+        for _ = 1, loopCount do
+            for _, parts in ipairs(partList) do
+                teleportAndSummon(parts[1], parts[2])
+            end
         end
-
-        executedWaves[waveText] = true -- Tandai wave ini telah dieksekusi
     end
 end
 
--- Menambahkan listener untuk mendeteksi perubahan teks di PathWaveDetection
-PathWaveDetection:GetPropertyChangedSignal("Text"):Connect(function()
-    local waveText = PathWaveDetection.Text
-    detectWaveAndExecute(waveText)
-end)
+-- Menambahkan listener untuk mendeteksi perubahan teks di PathMoneyDetection
+PathMoneyDetection:GetPropertyChangedSignal("Text"):Connect(checkMoneyAndExecute)
