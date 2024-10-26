@@ -10,9 +10,8 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
+    "https://github.com/LocasTheBoys/efentedeh/blob/main/AutoEquib",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection4",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1"
