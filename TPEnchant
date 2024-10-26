@@ -1,6 +1,8 @@
 --TP Enchant
 if game.PlaceId == 15846919378 then
     wait(1)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1055.18, 245.01, -176.63) -- teleport Pintu 4
+    wait(1)-1055.18, 245.01, -176.63
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1066.11, 245.01, -174.01) -- teleport Pintu 4
     print("Game ID cocok, script dijalankan.")
 else
