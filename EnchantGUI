@@ -1,4 +1,3 @@
---Enchant
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local CloseButton = Instance.new("TextButton")
@@ -87,14 +86,7 @@ end)
 
 -- Fungsi untuk tombol TP Enchant
 TPButton.MouseButton1Click:Connect(function()
-    if game.PlaceId == 15846919378 then
-        wait(1)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1066.11, 245.01, -174.01) -- teleport Pintu 4
-        print("Game ID cocok, script dijalankan.")
-    else
-        print("Game ID tidak cocok, script tidak dijalankan.")
-    end
-    print("TP Enchant button clicked!")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/TPEnchant"))()
 end)
 
 -- Fungsi untuk tombol ON True
