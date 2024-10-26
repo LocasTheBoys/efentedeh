@@ -1,7 +1,8 @@
 -- Konfigurasi
-local waitTime = 1.5 -- Waktu tunggu minimal untuk memasang pet
+local waitTime = 1.5 -- Waktu tunggu minimal sebelum memasang pet setelah teleport
 local petName = "Funtime Foxy" -- Nama pet yang akan disummon
 local repeatTeleport = 2 -- Jumlah pengulangan teleportasi dan summon
+local repeatDelay = 3 -- Delay antar pengulangan teleportasi dalam detik
 
 -- Fungsi untuk mendapatkan paths dari script 1
 local function getPaths()
@@ -47,6 +48,9 @@ local function teleportAndSummon(part1, part2)
         local argsSummon = { [1] = petName, [2] = humanoidRootPartCFrame }
         game:GetService("ReplicatedStorage").Remotes.Towers.SummonTower:FireServer(unpack(argsSummon))
         print("Summoning unit:", petName, "at position", character.HumanoidRootPart.Position)
+
+        -- Delay antar pengulangan teleportasi
+        wait(repeatDelay)
     end
 end
 
