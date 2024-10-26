@@ -1,3 +1,4 @@
+taks.wait(30)
 -- Konfigurasi Wave Detection
 local targetWaves = { "Wave 3/15", "Wave 5/15" }  -- Ganti dengan wave yang diinginkan
 local waitTimeWaveDetected = 5.5 -- Waktu tunggu dalam detik setelah wave terdeteksi
