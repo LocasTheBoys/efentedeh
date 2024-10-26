@@ -86,15 +86,11 @@ end
 -- Fungsi untuk memeriksa jumlah uang dan menjalankan auto sell dan summon pet
 local function checkMoneyAndExecute()
     local moneyText = PathMoneyDetection.Text
-    print("Teks uang terdeteksi: " .. tostring(moneyText))  -- Debugging awal
-
     -- Memastikan moneyText tidak nil dan memiliki format yang benar
     if moneyText and moneyText:match("^%$%d[%d,]*$") then
         -- Menghapus tanda "$" dan "," agar dapat dikonversi ke angka dengan benar
         local numericText = moneyText:match("%$(%d[%d,]*)"):gsub(",", "")
         local moneyAmount = tonumber(numericText) or 0
-        print("Jumlah uang setelah parsing: $" .. tostring(moneyAmount)) -- Debugging
-
         if moneyAmount >= targetMoney and not hasExecuted then
             print("Money meets target. Running auto sell and summoning Funtime Freddy...")
 
@@ -116,7 +112,6 @@ local function checkMoneyAndExecute()
             return -- Keluar dari fungsi setelah eksekusi selesai
         end
     else
-        print("Format uang tidak valid: " .. tostring(moneyText)) -- Debugging
     end
 end
 
