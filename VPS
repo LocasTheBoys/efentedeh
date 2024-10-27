@@ -10,7 +10,8 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://github.com/LocasTheBoys/efentedeh/blob/main/AutoEquib",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoEquib",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/EnchantGUI",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
