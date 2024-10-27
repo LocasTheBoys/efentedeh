@@ -3,7 +3,7 @@ wait(5)
 local delayBuyPresent = 1        -- Delay untuk beli present
 local delayOpenPresent = 2       -- Delay untuk membuka present
 local delayEquipPet = 5          -- Delay untuk equip pet setelah ditemukan
-local petName = "WitheredNightguard Afton" -- Nama pet yang ingin dicek
+local petName = "Nightguard Afton" -- Nama pet yang ingin dicek
 local presentName = "NightgaurdAftonPresent" -- Nama present yang akan dibuka
 local openQuantity = 1           -- Jumlah present yang akan dibuka
 
