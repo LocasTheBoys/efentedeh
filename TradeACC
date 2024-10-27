@@ -2,9 +2,9 @@ print("TRADE")
 -- Script ACCTRADE PENAMPUNG BUKAN FARMER
 -- Daftar pengguna target
 local targetUsers = {"rewra1tg", "overf4v9", "medio14a", "sligh3x8", "lost8xe_8", "angle9vb", "unenv7zt", "dispa53v", "liken32i", "sanit_2zd", "scraw3kk", "unplo6zi", "flypa_37m", "snows5b2", "stenc2m8", "woefu8si", "venge1mn", "proba7zt", "gulli_6ix", "kindl65i"} 
-local waitTime = 2 -- Waktu tunggu antara setiap iterasi trade
+local waitTime = 2 -- Waktu tunggu antara setiap permintaan trade
 
--- Fungsi untuk menerima trade dari user target
+-- Fungsi untuk menerima trade dari user target secara bersamaan
 local function acceptTradeFromUser(targetUser)
     local args = {
         [1] = targetUser
@@ -13,15 +13,18 @@ local function acceptTradeFromUser(targetUser)
     print("Trade diterima dari: " .. targetUser)
 end
 
--- Fungsi untuk menerima trade dari daftar targetUsers secara bergantian
-local function acceptTrades()
-    for _, user in ipairs(targetUsers) do
-        acceptTradeFromUser(user) -- Terima trade dari setiap pengguna dalam daftar
-        wait(waitTime) -- Tunggu beberapa detik sebelum melanjutkan ke pengguna berikutnya
+-- Fungsi untuk menerima trade dari daftar targetUsers secara bersamaan
+local function acceptTradesConcurrently()
+    for i, user in ipairs(targetUsers) do
+        spawn(function() -- Memulai trade secara paralel
+            wait((i - 1) * waitTime) -- Mengatur jeda antara setiap trade untuk menghindari spam
+            acceptTradeFromUser(user) -- Terima trade dari setiap pengguna
+        end)
     end
-    print("Semua trade dari daftar pengguna diterima.")
+    print("Semua permintaan trade dari daftar pengguna sedang diproses.")
     
-    -- Menjalankan remote tambahan setelah acceptTrades selesai
+    -- Menjalankan remote tambahan setelah seluruh daftar pengguna diproses
+    wait(#targetUsers * waitTime + 1) -- Tunggu sampai semua trade selesai diproses
     local args = {
         [1] = "Accept" 
     }
@@ -32,7 +35,7 @@ local function acceptTrades()
     wait(10)
 end
 
--- Loop untuk menjalankan fungsi acceptTrades beberapa kali
+-- Loop untuk menjalankan fungsi acceptTradesConcurrently beberapa kali
 for i = 1, 9999 do
-    acceptTrades()
+    acceptTradesConcurrently()
 end
