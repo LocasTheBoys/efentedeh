@@ -6,7 +6,7 @@ local webhookUrl = 'https://discord.com/api/webhooks/1223744576511148192/wlK-pp8
 if game.PlaceId == 15860930970 then
     print("Game ID cocok, script dijalankan.")
     
-    wait(1)  -- Tunggu 1 detik sebelum mulai
+    wait(3)  -- Tunggu 1 detik sebelum mulai
 
     local Players = game:GetService("Players")
     local Player = Players.LocalPlayer
