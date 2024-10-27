@@ -1,3 +1,5 @@
+wait(50)
+
 -- Donat No Visual 
 
 local player = game.Players.LocalPlayer
