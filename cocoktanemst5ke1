@@ -1,4 +1,4 @@
-wait(20)
+wait(10)
 -- Konfigurasi
 local petName = "Nightguard Afton" -- Nama pet yang akan disummon, mudah diubah di sini
 local waitTimeTeleport = 1 -- Waktu tunggu setelah teleportasi sebelum summon pet
