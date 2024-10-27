@@ -1,4 +1,5 @@
 -- List of items to sell with their corresponding quantities
+wait(2)
 local itemsToSell = {
     {name = "Pizza", quantity = 10000},
     {name = "Soul", quantity = 10000},
