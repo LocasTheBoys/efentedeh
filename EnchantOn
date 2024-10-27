@@ -3,7 +3,7 @@ local isEnchantActive = true  -- Ganti dengan false jika ingin menonaktifkan
 
 -- Konfigurasi Enchant
 local enchantConfig = {
-    {"Damage1", isEnchantActive}, 
+    {"Damage1", isEnchantActive},
     {"Damage2", isEnchantActive},
     {"Damage3", isEnchantActive},
     {"Range1", isEnchantActive},
@@ -12,8 +12,7 @@ local enchantConfig = {
     {"Speed1", isEnchantActive},  -- sampai Speed3
     {"Speed2", isEnchantActive},
     {"Speed3", isEnchantActive},
-    {"BossKiller", isEnchantActive},  -- jika true, maka tidak akan ter enchant
-    {"Withered", isEnchantActive}
+    {"BossKiller", isEnchantActive}  -- jika true, maka tidak akan ter enchant
 }
 
 -- Fungsi untuk memanggil Remote
