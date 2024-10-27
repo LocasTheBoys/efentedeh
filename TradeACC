@@ -1,0 +1,38 @@
+print("TRADE")
+-- Script ACCTRADE PENAMPUNG BUKAN FARMER
+-- Daftar pengguna target
+local targetUsers = {"rewra1tg", "overf4v9", "medio14a", "sligh3x8", "lost8xe_8", "angle9vb", "unenv7zt", "dispa53v", "liken32i", "sanit_2zd", "scraw3kk", "unplo6zi", "flypa_37m", "snows5b2", "stenc2m8", "woefu8si", "venge1mn", "proba7zt", "gulli_6ix", "kindl65i"} 
+local waitTime = 2 -- Waktu tunggu antara setiap iterasi trade
+
+-- Fungsi untuk menerima trade dari user target
+local function acceptTradeFromUser(targetUser)
+    local args = {
+        [1] = targetUser
+    }
+    game:GetService("ReplicatedStorage").Remotes.Trading.Accept:FireServer(unpack(args))
+    print("Trade diterima dari: " .. targetUser)
+end
+
+-- Fungsi untuk menerima trade dari daftar targetUsers secara bergantian
+local function acceptTrades()
+    for _, user in ipairs(targetUsers) do
+        acceptTradeFromUser(user) -- Terima trade dari setiap pengguna dalam daftar
+        wait(waitTime) -- Tunggu beberapa detik sebelum melanjutkan ke pengguna berikutnya
+    end
+    print("Semua trade dari daftar pengguna diterima.")
+    
+    -- Menjalankan remote tambahan setelah acceptTrades selesai
+    local args = {
+        [1] = "Accept" 
+    }
+    game:GetService("ReplicatedStorage").Remotes.Trading.Trade:FireServer(unpack(args))
+    print("Trade accepted.")
+    
+    -- Tunggu 10 detik setelah eksekusi remote "Accept"
+    wait(10)
+end
+
+-- Loop untuk menjalankan fungsi acceptTrades beberapa kali
+for i = 1, 9999 do
+    acceptTrades()
+end
