@@ -1,4 +1,4 @@
--- Donat No Visual Nightguard Afton
+-- Donat No Visual 
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -9,7 +9,7 @@ local maxFreddyCount = 10
 local currentFreddyCount = 0  -- Menghitung jumlah Freddy yang sudah disummon 
 
 -- Nama pet yang dapat dengan mudah diubah
-local nama_pet = "Nightguard Afton"  -- Anda dapat mengubah nama pet di sini
+local nama_pet = "Funtime Freddy"  -- Anda dapat mengubah nama pet di sini
 
 -- Radius lingkaran sekitar player
 local radius = 10  -- Radius luar
