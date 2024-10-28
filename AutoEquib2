@@ -1,5 +1,5 @@
 if game.PlaceId == 15846919378 then
-    wait(5)
+    wait(10)
         -- Konfigurasi Auto Equip Pet
     local petNames = { "Nightguard Afton", "Funtime Freddy", "Tangle" } -- Nama dasar pet
     local inventoryPath = game:GetService("Players").LocalPlayer.PlayerGui.Inventory.InventoryFrame.HolderFrame
