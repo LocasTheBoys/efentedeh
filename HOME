@@ -10,7 +10,7 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/JoinHellEnd",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim2",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/PlaceDetectionHellEnd",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
