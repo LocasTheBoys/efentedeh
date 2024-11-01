@@ -1,3 +1,4 @@
+wait(10)
 -- Konfigurasi Loadstring
 local loadstringUrl = "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpen" -- Ganti dengan link script Anda
 
