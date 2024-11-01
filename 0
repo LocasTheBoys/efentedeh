@@ -1,3 +1,4 @@
+wait(5)
 print("Script GACHA GACHA RUNING GAN")
 
 -- Konfigurasi Loadstrings
