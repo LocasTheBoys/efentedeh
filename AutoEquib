@@ -1,4 +1,4 @@
-wait(15)
+wait(2)
 -- Konfigurasi Utama
 local delayBuyPresent = 1        -- Delay untuk beli present
 local delayOpenPresent = 2       -- Delay untuk membuka present
