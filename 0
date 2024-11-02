@@ -5,7 +5,7 @@ print("Script GACHA GACHA RUNING GAN")
 local loadstringUrls = {
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/EnchantGUI", -- ini echant
     "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/TriggerTeleportHell", -- ini trigger pintu hell
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/GachaHell", -- ini auto open hell
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoEquib", -- ini auto open hell
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoEquib2"  -- delete pet
 }
 
