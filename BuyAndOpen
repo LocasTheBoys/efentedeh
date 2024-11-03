@@ -1,10 +1,10 @@
 -- Konfigurasi Utama Auto Buy And Open Present
-local delayBuyPresent = 2        -- Delay untuk beli present
+local delayBuyPresent = 1        -- Delay untuk beli present
 local delayOpenPresent = 2       -- Delay untuk membuka present
-local numberOfPresents = 2       -- Jumlah present yang ingin dibeli
-local presentName = "ClowntrapPresent" -- Nama present yang akan dibuka
+local numberOfPresents = 1       -- Jumlah present yang ingin dibeli
+local presentName = "ScarecrowFoxyPresent" -- Nama present yang akan dibuka
 local openQuantity = 1           -- Jumlah present yang akan dibuka per kali (jangan dirubah jika belum mengecheck remote)
-local numberOfOpensPerPresent = 2 -- Jumlah loop untuk membuka present (total present yang ingin dibuka)
+local numberOfOpensPerPresent = 1 -- Jumlah loop untuk membuka present (total present yang ingin dibuka)
 
 -- Rangkaian Proses Utama
 for i = 1, numberOfPresents do
