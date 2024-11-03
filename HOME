@@ -15,7 +15,7 @@ local scripts = {
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/PlaceDetectionN2",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking0test"
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking0testAll"
 }
 
 executeScripts(scripts)
