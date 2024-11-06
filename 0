@@ -4,8 +4,8 @@ print("Script GACHA GACHA RUNING GAN")
 -- Konfigurasi Loadstrings
 local loadstringUrls = {
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/EnchantGUI", -- ini echant
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpen", -- ini auto open hell gift
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpenGUI", -- 
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpen", -- ini auto open itme
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim", -- 
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpenGUI"  -- 
 }
 
