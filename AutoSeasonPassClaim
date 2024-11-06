@@ -6,5 +6,5 @@ for i = 1, 30 do
     }
 
     game:GetService("ReplicatedStorage").Remotes.SeasonPass.Claim:FireServer(unpack(args))
-    wait(0.1) -- Optional delay between claims, adjust as needed
+    wait(1) -- Optional delay between claims, adjust as needed
 end
