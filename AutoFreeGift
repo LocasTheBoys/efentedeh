@@ -5,5 +5,5 @@ for i = 1, 12 do
     }
     
     game:GetService("ReplicatedStorage").Remotes.Misc.FreeGift:FireServer(unpack(args))
-    --wait() -- Optional: add a delay between firing each gift, adjust the time as needed
+    --wait(0.5) -- Optional: add a delay between firing each gift, adjust the time as needed
 end
