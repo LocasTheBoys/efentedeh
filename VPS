@@ -17,7 +17,7 @@ local scripts = {
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/refs/heads/main/GPUSaver",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All"
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking2All"
 }
 
 executeScripts(scripts)
