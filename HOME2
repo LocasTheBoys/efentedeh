@@ -1,5 +1,4 @@
 --print("HOME 2")
---print("VPS 1")
 print("Full Script Is Running")
 local function executeScripts(scripts)
     for _, script in ipairs(scripts) do
