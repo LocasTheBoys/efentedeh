@@ -138,7 +138,7 @@ if game.PlaceId == 15860930970 then
 
     -- Loop untuk mengecek GUI Lost atau Won
     while true do
-        task.wait(1)
+        task.wait(0.1)
         local found = detectLostOrWon()
         if found then
             break
