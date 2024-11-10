@@ -10,12 +10,12 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
-    "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/PlaceDetectionN3",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/JoinHellEnd",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim2",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedehuy/refs/heads/main/PlaceDetectionHellEnd5",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
-    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/refs/heads/main/GPUSaver",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/GPUSAVERV2",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All"
 }
