@@ -5,5 +5,5 @@ for i = 1, 7 do
     }
 
     game:GetService("ReplicatedStorage").Remotes.Misc.Daily:FireServer(unpack(args))
-    wait(0.5) -- Optional delay between each claim, adjust if necessary
+    wait(1) -- Optional delay between each claim, adjust if necessary
 end
