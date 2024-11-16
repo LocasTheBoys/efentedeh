@@ -135,19 +135,27 @@ if game.PlaceId == 15860930970 then
         end
     end
 
-    -- Event listener untuk deteksi instan Lost atau Won
+    -- Gunakan GetPropertyChangedSignal untuk mendeteksi perubahan status secara langsung
     local function setupInstantDetection()
         local CompletedFolder = Player.PlayerGui:WaitForChild("Completed")
-        CompletedFolder.ChildAdded:Connect(function(child)
-            if child.Name == "Lost" and child.Visible then
-                local detectedItems = detectItems(child.Rewards)
+        local LostGui = CompletedFolder:WaitForChild("Lost")
+        local WonGui = CompletedFolder:WaitForChild("Won")
+
+        -- Menggunakan GetPropertyChangedSignal untuk mendeteksi perubahan status
+        LostGui:GetPropertyChangedSignal("Visible"):Connect(function()
+            if LostGui.Visible then
+                local detectedItems = detectItems(LostGui.Rewards)
                 if #detectedItems > 0 then
                     local executionDuration = os.difftime(os.time(), startTime)
                     local executionTime = os.date("!%X", executionDuration)
                     sendToWebhook("Player Is Lost", executionTime, detectedItems, PathWaveDetection.Text)
                 end
-            elseif child.Name == "Won" and child.Visible then
-                local detectedItems = detectItems(child.Rewards)
+            end
+        end)
+
+        WonGui:GetPropertyChangedSignal("Visible"):Connect(function()
+            if WonGui.Visible then
+                local detectedItems = detectItems(WonGui.Rewards)
                 if #detectedItems > 0 then
                     local executionDuration = os.difftime(os.time(), startTime)
                     local executionTime = os.date("!%X", executionDuration)
