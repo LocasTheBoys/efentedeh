@@ -23,7 +23,7 @@ local function autoSell(items)
             [2] = item.quantity
         }
         game:GetService("ReplicatedStorage").Remotes.Misc.Salvage:FireServer(unpack(args))
-        wait(2) -- Adding a small delay to avoid flooding the server
+        wait(1) -- Adding a small delay to avoid flooding the server
     end
 end
 
