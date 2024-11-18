@@ -1,4 +1,4 @@
-print("TESTIS2")
+print("RUN RUN GO")
 -- Konfigurasi
 wait(15)
 local petName = "Freddy"
