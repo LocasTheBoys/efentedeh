@@ -1,3 +1,4 @@
+print("TESTIS")
 -- Konfigurasi
 wait(15)
 local petName = "Freddy"
@@ -19,11 +20,11 @@ local executedWaves = {}
 local stopLoop = false
 local scriptExecuted = false -- Variabel untuk memastikan script hanya berjalan sekali
 
--- Fungsi untuk menghitung jumlah unit yang telah ditempatkan
+-- Fungsi untuk menghitung jumlah unit yang telah ditempatkan berdasarkan nama
 local function countPlacedUnits(unitName)
     local count = 0
     for _, tower in pairs(TowersFolder:GetChildren()) do
-        if tower.Name == unitName and tower:IsA("Model") then
+        if tower.Name == unitName and tower:IsA("Folder") then -- Pastikan ini adalah folder
             count = count + 1
         end
     end
@@ -41,10 +42,13 @@ end
 local function teleportAndSummon(parts, offset)
     if stopLoop then return end
 
+    -- Hitung jumlah folder "Freddy" yang ada di dalam workspace.Towers
     local currentPlacementCount = countPlacedUnits(petName)
+    print("Jumlah unit saat ini:", currentPlacementCount, "dari maksimal:", PlacementMaxCap)
+
     if currentPlacementCount >= PlacementMaxCap then
         stopLoop = true
-        print("Script dihentikan karena kapasitas maksimum unit tercapai.")
+        print("Loop dihentikan karena kapasitas maksimum unit tercapai.")
         
         -- Eksekusi loadstring jika kapasitas maksimum tercapai
         loadstring(game:HttpGet("https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/0"))()
@@ -52,6 +56,7 @@ local function teleportAndSummon(parts, offset)
         return
     end
 
+    -- Proses teleportasi dan summon
     local character = Player.Character or Player.CharacterAdded:Wait()
     local adjustedPosition = calculateAdjustedMidpoint(parts, offset)
     character.HumanoidRootPart.CFrame = CFrame.new(adjustedPosition)
@@ -78,26 +83,28 @@ local function startSummoning()
     for i = 1, loopCount do
         if stopLoop then break end
 
-        local offsets = {
-            Vector3.new(19, 0, -20),
-            Vector3.new(13, 0, -20),
-            Vector3.new(8, 0, -20),
-            Vector3.new(0, 0, -20),
-            Vector3.new(0, 0, -31),
-            Vector3.new(8, 0, -31),
-            Vector3.new(13, 0, -31),
-            Vector3.new(19, 0, -31)
-        }
-
-        local parts = {
+        -- Posisi 1
+        local parts1 = {
             workspace.Map:WaitForChild("Paths"):WaitForChild("1"):WaitForChild("Start"),
             workspace.Map:WaitForChild("Paths"):WaitForChild("1"):WaitForChild("1"),
             workspace.Map:WaitForChild("Paths"):WaitForChild("1"):WaitForChild("2"),
             workspace.Map:WaitForChild("Paths"):WaitForChild("1"):WaitForChild("3")
         }
+        local offsets = {
+            Vector3.new(19, 0, -20), -- Posisi 1
+            Vector3.new(13, 0, -20), -- Posisi 2
+            Vector3.new(8, 0, -20),  -- Posisi 3
+            Vector3.new(0, 0, -20),  -- Posisi 4
+            Vector3.new(0, 0, -31),  -- Posisi 5
+            Vector3.new(8, 0, -31),  -- Posisi 6
+            Vector3.new(13, 0, -31), -- Posisi 7
+            Vector3.new(19, 0, -31)  -- Posisi 8
+        }
 
-        teleportAndSummon(parts, offsets[i]) -- Menggunakan offset berdasarkan posisi
+        teleportAndSummon(parts1, offsets[i]) -- Offset untuk setiap posisi
         task.wait(waitTimeBetweenTeleports)
+
+        task.wait(waitTimeBetweenLoops)
     end
 end
 
