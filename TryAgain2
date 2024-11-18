@@ -1,5 +1,5 @@
 -- CONFIG
-local delayAfterResult = 1.5 -- Delay dalam detik setelah Lost atau Won terdeteksi
+local delayAfterResult = 1 -- Delay dalam detik setelah Lost atau Won terdeteksi
 
 -- Auto PLAY AGAIN YES
 local Players = game:GetService("Players")
