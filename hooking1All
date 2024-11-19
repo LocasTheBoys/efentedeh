@@ -18,6 +18,7 @@ if game.PlaceId == 15860930970 then
     -- List asset ID untuk item yang dideteksi
     local itemList = {
         ["Coins"] = "rbxassetid://16777953884",
+        ["Event Coins"] = "rbxassetid://107361664274197",
         ["Flashlight"] = "rbxassetid://133377596734432",
         ["Pizza"] = "rbxassetid://138130971515753",
         ["Soul"] = "rbxassetid://113741147309700",
