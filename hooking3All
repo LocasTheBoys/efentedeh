@@ -1,3 +1,5 @@
+wait(3)
+--RUMAH
 -- Masukkan webhook URL di sini untuk memudahkan penggantian
 local webhookUrl = 'https://discord.com/api/webhooks/1294985410333642822/mZBFRJ9SR71FvKFzQONHmHAmc624Gk3JvgTxDxZSBONH6qt4twJxLELH5A_BUx4ohmpL'
 
