@@ -5,7 +5,7 @@ local itemsToSell = {
     {name = "Soul", quantity = 10000},
     {name = "OldTV", quantity = 10000},
     {name = "Flashlight", quantity = 10000},
-    {name = "EternalGlass", quantity = 10000},
+    {name = "EternalGlass", quantity = 0},
     {name = "GoldenLock", quantity = 10000},
     {name = "Agony", quantity = 10000}, -- Tengkorak 30 souls
     {name = "UncommonRemnant", quantity = 10000}, -- Bola Bola Shiny Hijau
@@ -23,7 +23,7 @@ local function autoSell(items)
             [2] = item.quantity
         }
         game:GetService("ReplicatedStorage").Remotes.Misc.Salvage:FireServer(unpack(args))
-        wait(1) -- Adding a small delay to avoid flooding the server
+        wait(2) -- Adding a small delay to avoid flooding the server
     end
 end
 
