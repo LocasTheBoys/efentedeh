@@ -1,6 +1,6 @@
 wait(10)
 -- Konfigurasi Loadstring
-local loadstringUrl = "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpen" -- Ganti dengan link script Anda
+local loadstringUrl = "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpen2" -- Ganti dengan link script Anda
 
 -- Membuat GUI
 local ScreenGui = Instance.new("ScreenGui")
