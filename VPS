@@ -10,7 +10,7 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AllItemSell2",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/BuyAndOpenGUI",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
