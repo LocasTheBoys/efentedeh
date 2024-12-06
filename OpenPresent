@@ -1,0 +1,16 @@
+-- Konfigurasi Utama Auto Open Present
+local delayOpenPresent = 2       -- Delay untuk membuka present
+local presentName = "Corrupted" -- Nama present yang akan dibuka
+local openQuantity = 8           -- Jumlah present yang akan dibuka per kali (jangan dirubah jika belum mengecheck remote)
+local numberOfOpensPerPresent = 1 -- Jumlah loop untuk membuka present (total present yang ingin dibuka)
+
+-- Rangkaian Proses Utama
+for i = 1, numberOfOpensPerPresent do  -- Loop untuk membuka beberapa present per iterasi
+    local args = {
+        [1] = presentName,
+        [2] = openQuantity
+    }
+    game:GetService("ReplicatedStorage").Remotes.Misc.OpenPresent:FireServer(unpack(args))
+    print("Present ke-" .. i .. " dibuka.")
+    wait(delayOpenPresent)   -- Tunggu sebelum membuka present berikutnya
+end
