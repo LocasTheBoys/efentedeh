@@ -18,7 +18,7 @@ if game.PlaceId == 15860930970 then
     -- List asset ID untuk item yang dideteksi
     local itemList = {
         ["Coins"] = "rbxassetid://16777953884",
-        ["Event Coins"] = "rbxassetid://107361664274197",
+        ["Event Coins"] = "rbxassetid://140449766890030",
         ["Flashlight"] = "rbxassetid://133377596734432",
         ["Pizza"] = "rbxassetid://138130971515753",
         ["Soul"] = "rbxassetid://113741147309700",
@@ -33,6 +33,7 @@ if game.PlaceId == 15860930970 then
         ["Secret Remnant"] = "rbxassetid://17645427747",
         ["Souls"] = "rbxassetid://17758801602",
         ["Corrupted Present"] = "rbxassetid://101695651387234",
+        ["Bouncer Present"] = "rbxassetid://70432876237333",
         ["Scarecrow Foxy Present"] = "rbxassetid://125180390639507"
     }
 
