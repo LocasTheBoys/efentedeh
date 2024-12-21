@@ -34,6 +34,7 @@ if game.PlaceId == 15860930970 then
         ["Secret Remnant"] = "rbxassetid://17645427747",
         ["Souls"] = "rbxassetid://17758801602",
         ["Corrupted Present"] = "rbxassetid://101695651387234",
+        ["Bouncer Present"] = "rbxassetid://70432876237333",
         ["Scarecrow Foxy Present"] = "rbxassetid://125180390639507"
     }
 
