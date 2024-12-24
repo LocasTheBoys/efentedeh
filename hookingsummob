@@ -1,0 +1,129 @@
+-- Konfigurasi
+local targetedPet = true -- Set ke true agar berhenti setelah menemukan pet yang ditargetkan, false untuk terus gacha
+local targetedPetName = "Black Ice Freddy" -- Nama pet yang ditargetkan
+local webhookUrl = "https://discord.com/api/webhooks/1321214413713313913/cj0ojqycNhZkHCgGiKa_hm2rHXaSonY8NqML_BX8rp1mkC-FcaT8nEUsx4dH6qKfqOGw"
+local stopGacha = false
+local petQuantities = {} -- Untuk menyimpan data pet yang sudah ditemukan
+
+-- Fungsi untuk mengirimkan webhook
+local function sendWebhook(message, totalQuantity, petFoundTime, petName)
+    print("Attempting to send webhook with message:", message)
+    local httpService = game:GetService("HttpService")
+    
+    -- Format waktu saat pet ditemukan (misalnya "Today at 07:35 AM")
+    local formattedTime = os.date("%I:%M %p", petFoundTime)
+    
+    -- Membuat payload dengan format yang diinginkan
+    local payload = {
+        embeds = {{
+            title = "**( FNTD GACOR HUB )**",  -- Menambahkan bold pada title
+            description = [[
+**Name**  
+||]] .. game:GetService("Players").LocalPlayer.Name .. [[||  
+
+**Result**  
+Player Is Getting: **]] .. petName .. [[**
+
+**Total**  
+Total ]] .. petName .. [[: ]] .. totalQuantity .. [[
+
+]] .. "\n" .. "Today at " .. formattedTime .. [[
+            ]],
+            color = 65280 -- Hijau
+        }}
+    }
+    
+    local headers = {["Content-Type"] = "application/json"}
+    local request = {Url = webhookUrl, Method = "POST", Headers = headers, Body = httpService:JSONEncode(payload)}
+
+    -- Memeriksa dan mengirim request
+    local success, response = pcall(function()
+        local requestMethod = syn and syn.request or http_request or request
+        return requestMethod(request)
+    end)
+
+    if not success then
+        print("Failed to send webhook. Error:", response)
+    else
+        print("Webhook sent successfully.")
+    end
+end
+
+-- Fungsi untuk mendapatkan jumlah pet dari Text dalam Info
+local function getPetQuantity(infoText)
+    return tonumber(string.match(infoText, "x(%d+)")) or 0
+end
+
+-- Menggunakan path yang baru untuk memeriksa inventory
+local inventoryPath = game:GetService("Players").LocalPlayer.PlayerGui.Inventory.InventoryFrame.HolderFrame.Units
+
+-- Fungsi untuk memeriksa inventory
+local function checkInventory()
+    for _, child in ipairs(inventoryPath:GetChildren()) do
+        print("Checking unit:", child.Name) -- Debugging
+
+        -- Memastikan elemen Info ada
+        local info = child:FindFirstChild("Info")
+        if info then
+            print("  Info exists.") -- Debugging
+
+            -- Memastikan elemen Text ada di dalam Info
+            local infoText = info.Text
+            if infoText then
+                print("    Text found:", infoText) -- Debugging
+
+                -- Mengekstrak jumlah pet
+                local quantity = getPetQuantity(infoText)
+                print("    Quantity:", quantity) -- Debugging
+
+                -- Memeriksa apakah unit ini adalah target pet dan menangani pet Shiny
+                local petName = child.Name
+                if petName == targetedPetName or petName == "Shiny" .. targetedPetName then
+                    -- Menambahkan kata "Shiny" jika pet ini adalah Shiny
+                    if petName == "Shiny" .. targetedPetName then
+                        petName = "Shiny " .. targetedPetName
+                    end
+                    if not petQuantities[quantity] then
+                        petQuantities[quantity] = true -- Tandai bahwa jumlah ini sudah diproses
+                        return true, quantity, petName -- Mengembalikan jumlah pet dan nama pet
+                    end
+                end
+            else
+                print("    Text not found.") -- Debugging
+            end
+        else
+            print("  Info not found.") -- Debugging
+        end
+    end
+    return false, nil, nil
+end
+
+-- Fungsi untuk melakukan gacha
+local function performGacha()
+    if stopGacha then
+        print("Gacha stopped.")
+        return
+    end
+    local args = {[1] = 10, [2] = "Steampunk"}
+    print("Invoking gacha...")
+    game:GetService("ReplicatedStorage").Remotes.Summons.Hatch:InvokeServer(unpack(args))
+end
+
+-- Simpan waktu awal saat script dijalankan
+local startTime = os.time()
+
+-- Loop utama untuk gacha dan pengecekan inventory
+while not stopGacha do
+    local found, quantity, petName = checkInventory()
+    if found then
+        -- Mengirim webhook dengan jumlah yang ditemukan dan nama pet yang benar
+        local petFoundTime = os.time() -- Waktu saat pet ditemukan
+        sendWebhook("Targeted pet found: " .. petName, quantity, petFoundTime, petName)
+        if targetedPet then
+            print("Stopping gacha as targeted pet is found.")
+            stopGacha = true
+        end
+    end
+    performGacha()
+    task.wait(2)
+end
