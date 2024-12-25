@@ -1,6 +1,6 @@
 -- Konfigurasi
 local targetedPet = true -- Set ke true agar berhenti setelah menemukan pet yang ditargetkan, false untuk terus gacha
-local targetedPetName = "Old Man Consequences" -- Nama pet yang ditargetkan "Black Ice Freddy"
+local targetedPetName = { "Old Man Consequences", "Old Man Krampus", "Black Ice Freddy" } -- Nama pet
 local webhookUrl = "https://discord.com/api/webhooks/1321214413713313913/cj0ojqycNhZkHCgGiKa_hm2rHXaSonY8NqML_BX8rp1mkC-FcaT8nEUsx4dH6qKfqOGw"
 local stopGacha = false
 local petQuantities = {} -- Untuk menyimpan data pet yang sudah ditemukan
@@ -78,14 +78,16 @@ local function checkInventory()
 
                 -- Memeriksa apakah unit ini adalah target pet dan menangani pet Shiny
                 local petName = child.Name
-                if petName == targetedPetName or petName == "Shiny" .. targetedPetName then
-                    -- Menambahkan kata "Shiny" jika pet ini adalah Shiny
-                    if petName == "Shiny" .. targetedPetName then
-                        petName = "Shiny " .. targetedPetName
-                    end
-                    if not petQuantities[quantity] then
-                        petQuantities[quantity] = true -- Tandai bahwa jumlah ini sudah diproses
-                        return true, quantity, petName -- Mengembalikan jumlah pet dan nama pet
+                for _, name in ipairs(targetedPetName) do
+                    if petName == name or petName == "Shiny " .. name then
+                        -- Menambahkan kata "Shiny" jika pet ini adalah Shiny
+                        if petName == "Shiny " .. name then
+                            petName = "Shiny " .. name
+                        end
+                        if not petQuantities[quantity] then
+                            petQuantities[quantity] = true -- Tandai bahwa jumlah ini sudah diproses
+                            return true, quantity, petName -- Mengembalikan jumlah pet dan nama pet
+                        end
                     end
                 end
             else
