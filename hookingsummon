@@ -1,6 +1,6 @@
 -- Konfigurasi
 local targetedPet = true -- Set ke true agar berhenti setelah menemukan pet yang ditargetkan, false untuk terus gacha
-local targetedPetName = "Black Ice Freddy" -- Nama pet yang ditargetkan
+local targetedPetName = "Old Man Consequences" -- Nama pet yang ditargetkan "Black Ice Freddy"
 local webhookUrl = "https://discord.com/api/webhooks/1321214413713313913/cj0ojqycNhZkHCgGiKa_hm2rHXaSonY8NqML_BX8rp1mkC-FcaT8nEUsx4dH6qKfqOGw"
 local stopGacha = false
 local petQuantities = {} -- Untuk menyimpan data pet yang sudah ditemukan
