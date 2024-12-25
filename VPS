@@ -17,6 +17,7 @@ local scripts = {
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking2All",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/EqFredOnly"--delete bagian ini jika sudah auto win
 }
 
