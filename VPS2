@@ -1,4 +1,4 @@
---print("VPS 1") gacga gaca
+--print("VPS 2") gacga gaca
 print("Full Script Is Running")
 local function executeScripts(scripts)
     for _, script in ipairs(scripts) do
@@ -10,14 +10,14 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/GachaCrisFULL",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin2",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim2",
-    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/PlaceDetection1",
+    "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/PlaceDetectionA2",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon2",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK"
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All"
 }
 
 executeScripts(scripts)
