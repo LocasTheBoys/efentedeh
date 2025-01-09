@@ -1,4 +1,4 @@
---print("VPS 1") gacga gaca
+--print("VPS 1") Konfigurasi Loadstrings Gacha Gacha Mingguan
 print("Full Script Is Running")
 local function executeScripts(scripts)
     for _, script in ipairs(scripts) do
@@ -10,13 +10,12 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/0",
+    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/5",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
-    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/PlaceDetection1",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK"
 }
 
@@ -73,4 +72,40 @@ local scripts = {
 }
 
 executeScripts(scripts)
+
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+
+--print("VPS 1") SC main biasa
+print("Full Script Is Running")
+local function executeScripts(scripts)
+    for _, script in ipairs(scripts) do
+        local co = coroutine.create(function()
+            loadstring(game:HttpGet(script))()
+        end)
+        coroutine.resume(co)
+    end
+end
+
+local scripts = {
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AllItemSell2",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin2",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
+    "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/PlaceDetectionA1",
+    --"https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/PlaceDetectionA2",--bukan apex hapus sdh
+    "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
+    "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
+    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All"
+}
+
+executeScripts(scripts)
+
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+
 
