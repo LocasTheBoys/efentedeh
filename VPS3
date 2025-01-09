@@ -14,7 +14,7 @@ local scripts = {
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/PlaceDetection7Fix",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/EqFredOnly",--delete bagian ini jika sudah auto win
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoKickTest",--TEST RUNNNG SCRIP
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoKickTest",--TEST RUNNNG SCRIP
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
