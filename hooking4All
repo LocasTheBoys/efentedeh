@@ -1,7 +1,7 @@
 wait(3)
 --RUMAH 2
 -- Masukkan webhook URL di sini untuk memudahkan penggantian
-local webhookUrl = 'https://discord.com/api/webhooks/1323013963100721162/XGNk130PVO2jre2s_A3rLGbtse4gqpK6hVmoAeSx5eY4CIqD59SDTlQhAHl0pHSwXpAN'
+local webhookUrl = 'https://discord.com/api/webhooks/1326915439699169321/3O2cmGQ2XsAbCB1noYSKzqhgKeNCfRIBNf63hAvJx3y4WC5VDQFKFhrWwshQ2D_0jxYT'
 
 -- Periksa apakah game ID cocok
 if game.PlaceId == 15860930970 then
