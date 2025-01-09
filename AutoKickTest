@@ -1,61 +1,60 @@
 if game.PlaceId == 15860930970 then
-    wait(30)
-    print("Auto Kick Script Is Running")
+    print("Game ID cocok, menunggu 5 menit sebelum menjalankan script...")
+    wait(5 * 60) -- Tunggu selama 5 menit
 
-    -- Fungsi untuk kick player
-    local function kickPlayer(player, duration)
-        wait(duration)
-        player:Kick("You have been kicked from the game for 5 minutes.")
-    end
+    -- Konfigurasi
+    local waitTimeBeforeCheck = 3 -- Waktu tunggu sebelum memulai pengecekan pemain (dalam detik)
 
-    -- Durasi kick (5 menit = 300 detik)
-    local kickDuration = 5 * 60
-
-    -- Mendapatkan player dan melakukan kick
     local Players = game:GetService("Players")
-    local localPlayer = Players.LocalPlayer
-    kickPlayer(localPlayer, kickDuration)
+    local LocalPlayer = Players.LocalPlayer
 
-    -- Menunggu prompt kick muncul
-    repeat wait() until game.CoreGui:FindFirstChild('RobloxPromptGui')
+    -- Path GUI
+    local PathWaveDetection = LocalPlayer.PlayerGui.Top.Wave
+    local PathToYesButton = LocalPlayer.PlayerGui.Top.SkipWave.Yes
+    local Connections = {"Activated", "MouseButton1Click", "MouseButton1Down"}
 
-    -- GPU Saver script setelah prompt kick
-    print("GPU SAVER")
-    local rs = game:GetService("RunService")
-    local coreGui = game:GetService("CoreGui")
-
-    -- Fungsi untuk menambahkan overlay hitam penuh ke layar
-    local function addFullBlackScreen()
-        if not coreGui:FindFirstChild("BlackOverlay") then
-            local screenGui = Instance.new("ScreenGui")
-            screenGui.Name = "BlackOverlay"
-            screenGui.ResetOnSpawn = false
-            screenGui.IgnoreGuiInset = true
-            screenGui.DisplayOrder = 10000
-
-            local blackFrame = Instance.new("Frame")
-            blackFrame.Size = UDim2.new(1, 0, 1, 0)
-            blackFrame.Position = UDim2.new(0, 0, 0, 0)
-            blackFrame.BackgroundColor3 = Color3.new(0, 0, 0)
-            blackFrame.BackgroundTransparency = 0
-            blackFrame.BorderSizePixel = 0
-            blackFrame.ZIndex = 10000
-            blackFrame.Parent = screenGui
-
-            screenGui.Parent = coreGui
+    -- Fungsi untuk menekan tombol "Yes" pada auto skip
+    local function autoSkip()
+        for _, connectionType in next, Connections do
+            if PathToYesButton[connectionType] then
+                for _, conn in next, getconnections(PathToYesButton[connectionType]) do
+                    conn:Fire()
+                end
+            end
         end
     end
 
-    -- Nonaktifkan rendering 3D untuk mengurangi beban GPU
-    rs:Set3dRenderingEnabled(false)
+    -- Fungsi untuk mengecek keberadaan pemain lain
+    local function detectOtherPlayers()
+        local playerCount = #Players:GetPlayers()
 
-    -- Menambahkan overlay hitam penuh ke layar
-    addFullBlackScreen()
+        -- Jika ada pemain lain selain LocalPlayer, jalankan auto-skip
+        if playerCount > 1 then
+            autoSkip()
+        end
+    end
 
-    -- Mengaktifkan throttle untuk membatasi framerate
-    rs:SetThrottleFramerateEnabled(true)
+    -- Listener untuk mendeteksi perubahan jumlah pemain
+    Players.PlayerAdded:Connect(function()
+        detectOtherPlayers() -- Periksa ketika pemain baru masuk
+    end)
 
-    print("Game ID cocok, GPU Saver diaktifkan.")
+    Players.PlayerRemoving:Connect(function()
+        detectOtherPlayers() -- Periksa ketika pemain keluar
+    end)
+
+    -- Loop untuk menekan tombol auto skip secara berkala jika ada pemain lain
+    task.spawn(function()
+        wait(waitTimeBeforeCheck) -- Tunggu sebelum memulai pengecekan pemain
+        while true do
+            detectOtherPlayers() -- Periksa keberadaan pemain lain secara berkala
+            task.wait(5) -- Tunggu beberapa detik sebelum pengecekan berikutnya
+        end
+    end)
+
+    -- Tambahkan script lainnya di sini
+    print("Script berhasil dijalankan setelah 5 menit.")
 else
+    -- Script ini hanya dijalankan jika game ID tidak cocok
     print("Game ID tidak cocok, script tidak dijalankan.")
 end
