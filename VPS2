@@ -21,6 +21,7 @@ local scripts = {
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
     --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",-- INI ANTI AFKKKKKKKKKKKKK
     --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/FIXINGProblema",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking3All"
 }
 
