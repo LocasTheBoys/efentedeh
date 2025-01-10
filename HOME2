@@ -10,16 +10,16 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
-    "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/1",
+    --"https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/1",
     --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin3End",-- endless crish
-    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin2",
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoJoin2",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/Claim2",
     "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/PlaceDetection1",
     "https://raw.githubusercontent.com/LocasTheBoys/selah/main/AntiDC",
     "https://raw.githubusercontent.com/LocasTheBoys/efenprojekmatiktuga/refs/heads/main/LOWGRAPIK",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP",
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",-- INI ANTI AFKKKKKKKKKKKKK
-    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",-- INI ANTI AFKKKKKKKKKKKKK
+    --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking4All"
 }
 
