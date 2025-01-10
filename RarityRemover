@@ -1,0 +1,21 @@
+if game.PlaceId == 15846919378 then
+    wait(1) -- Tunggu 1 detik
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-467.69, 76.66, 411.21) -- teleport ke Summon
+    wait(2) -- Tunggu 2 detik sebelum
+    -- Daftar rarity yang ingin dihapus
+    local rarities = { "Uncommon", "Rare", "Epic", "Mythic" }
+    
+    -- Loop untuk menjalankan auto delete untuk setiap rarity dengan delay
+    for _, rarity in ipairs(rarities) do
+        local args = {
+            [1] = rarity
+        }
+        game:GetService("ReplicatedStorage").Remotes.Misc.AutoDelete:FireServer(unpack(args))
+        wait(1) -- Delay selama 1 detik setelah setiap eksekusi
+    end
+    print("Game ID cocok, skrip dijalankan.")
+else
+    -- Script ini hanya dijalankan jika game ID tidak cocok
+    print("Game ID tidak cocok, skrip tidak dijalankan.")
+end
+
