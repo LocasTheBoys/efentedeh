@@ -12,7 +12,7 @@ if game.PlaceId == 15846919378 then
     local scripts = {
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoDailyClaim",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoFreeGift",
-        "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/CrisClaimKalender",
+        --"https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/CrisClaimKalender",
         "https://raw.githubusercontent.com/LocasTheBoys/krissdaboy/refs/heads/main/CrisClaimSeason",
         "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AutoSeasonPassClaim"
     }
