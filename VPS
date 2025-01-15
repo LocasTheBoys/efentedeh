@@ -26,6 +26,7 @@ local scripts = {
     --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/AntiAFK",-- INI ANTI AFKKKKKKKKKKKKK
     --"https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hookingsummon",
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/FIXINGProblema",-- INI GUNAKAN JIKA PERLU
+    "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/FIXINGProblemaEND",-- INI GUNAKAN JIKA PERLU
     "https://raw.githubusercontent.com/LocasTheBoys/efentedeh/refs/heads/main/hooking1All"
 }
 
