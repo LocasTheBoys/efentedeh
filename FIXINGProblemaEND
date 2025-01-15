@@ -1,12 +1,13 @@
 -- Memeriksa apakah PlaceId sesuai  
 if game.PlaceId == 15860930970 then  
     -- Mendapatkan layanan Players dan UI dari Roblox  
+    print("Fixing Problema End Is Running")
     local Players = game:GetService("Players")  
     local Player = Players.LocalPlayer  
     local PathWaveDetection = Player.PlayerGui.Top.Wave
 
     -- Daftar target waves untuk mendeteksi lost wave  
-    local targetWaves = { "Wave 15/∞", "Wave 16/∞" }
+    local targetWaves = { "Wave 15/∞" }
 
     -- Script Rejoin To Another Server  
     local function rejoinToAnotherServer()  
